@@ -29,6 +29,15 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    },
+    {
+      "firstName": "Teodora",
+      "lastName": "Jovcheska",
+      "username": "tjovcheska",
+      "email": "jovcheskateodora@gmail.com",
+      "phone": 70352918,
+      "password": "Teodora",
+      "id": 2
     }
   ],
   "profile": {

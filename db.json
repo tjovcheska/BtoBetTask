@@ -1,35 +1,19 @@
 {
-  "posts": [
+  "events": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    },
-    {
-      "id": 2,
       "eventName": "Event1",
       "eventDate": "2022-01-01",
       "eventDescription": "EventEventEvent"
     },
     {
-      "id": 3,
+      "id": 2,
       "eventName": "Event2",
       "eventDate": "2022-01-07",
-      "eventDescription": "EventEvent"
-    },
-    {
-      "id": 4,
-      "eventName": "tjovcheska",
-      "eventDate": null,
-      "eventDescription": "tjovcheska"
+      "eventDescription": "EventEventEvent"
     }
   ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    },
+  "users": [
     {
       "firstName": "Teodora",
       "lastName": "Jovcheska",
@@ -38,15 +22,6 @@
       "phone": 70352918,
       "password": "Teodora",
       "id": 2
-    },
-    {
-      "firstName": "Teodora",
-      "lastName": "Jovcheska",
-      "username": "tjovcheska",
-      "email": "jovcheskateodora@gmail.com",
-      "phone": 70352918,
-      "password": "Teodora",
-      "id": 3
     }
   ],
   "profile": {

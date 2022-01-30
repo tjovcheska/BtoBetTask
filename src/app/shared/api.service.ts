@@ -10,7 +10,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   postEvent(data: any) {
-    return this.http.post<any>("http://localhost:3000/posts", data)
+    return this.http.post<any>("http://localhost:3000/events", data)
     .pipe(map((res: any)=>{
       return res;
     }
@@ -18,7 +18,7 @@ export class ApiService {
   }
 
   getEvent() {
-    return this.http.get<any>("http://localhost:3000/posts")
+    return this.http.get<any>("http://localhost:3000/events")
     .pipe(map((res: any)=>{
       return res;
     }
@@ -26,7 +26,7 @@ export class ApiService {
   }
 
   updateEvent(data: any, id: number) {
-    return this.http.put<any>("http://localhost:3000/posts"+id, data)
+    return this.http.put<any>("http://localhost:3000/events"+id, data)
     .pipe(map((res: any)=>{
       return res;
     }
@@ -34,7 +34,7 @@ export class ApiService {
   }
 
   deleteEvent(id: number) {
-    return this.http.delete<any>("http://localhost:3000/posts" + id)
+    return this.http.delete<any>("http://localhost:3000/events" + id)
     .pipe(map((res: any)=>{
       return res;
     }

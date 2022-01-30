@@ -3,7 +3,6 @@
     width: 500px;
     padding: 40px;
     position: absolute;
-    top: 25%;
     left: 50%;
     transform: translate(-50%, 0%);
     background: hsla(205, 46%, 30%, 1);

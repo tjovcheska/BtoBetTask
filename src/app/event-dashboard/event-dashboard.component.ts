@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { ApiService } from '../shared/api.service';
 import { EventModel } from './event-dashboard.model';
 
@@ -20,9 +20,9 @@ export class EventDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
-      eventName : [''],
-      eventDate : [''],
-      eventDescription : ['']
+      eventName : ['', Validators.required],
+      eventDate : ['', Validators.required],
+      eventDescription : ['', Validators.required]
     })
     this.getAllEvents();
   }
@@ -60,16 +60,16 @@ export class EventDashboardComponent implements OnInit {
   }
 
   deleteEvent(row: any) {
-    this.api.deleteEvent(row.id).
-    subscribe(res=>{
-      alert("Event Deleted!");
+    this.api.deleteEvent(row.id)
+    .subscribe(res=>{
+      alert("Event deleted successfully!");
       this.getAllEvents();
-    })
+    });
   }
 
   onEdit(row: any) {
-    this.showAdd = true;
-    this.showUpdate = false;
+    this.showAdd = false;
+    this.showUpdate = true;
     this.eventModelObj.id = row.id;
     this.formValue.controls['eventName'].setValue(row.eventName);
     this.formValue.controls['eventDate'].setValue(row.eventDate);
@@ -83,7 +83,7 @@ export class EventDashboardComponent implements OnInit {
 
     this.api.updateEvent(this.eventModelObj, this.eventModelObj.id)
     .subscribe(res=>{
-      alert("Updated successfully");
+      alert("Event updated sucessfully!");
       let ref = document.getElementById('cancel');
       ref?.click();
       this.formValue.reset();

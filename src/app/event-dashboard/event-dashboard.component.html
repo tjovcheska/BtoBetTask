@@ -1,38 +1,38 @@
-<nav class="navbar navbar-light bg-primary">
+<nav class="navbar navbar-light bg-light">
     <div class="container-fluid">
-        <h1 style="color: aliceblue;">Events</h1>
+        <h1>Events</h1>
         <div class="d-flex">
             <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="clickAddEvent()">Add Event</button>
-            <button routerLink="/login" class="btn btn-danger mx-2">Logout</button>
+            <button routerLink="/login" class="btn btn-secondary mx-3">Logout</button>
         </div>
     </div>
 </nav>
 
-<table class="table mt-3">
+<table class="table table-striped">
     <thead>
-        <tr>
-            <th scope="col">Event ID</th>
-            <th scope="col">Event Name</th>
-            <th scope="col">Event Date</th>
-            <th scope="col">Event Description</th>
-            <th scope="col">Action</th>
-        </tr>
+      <tr>
+        <th scope="col">Event ID</th>
+        <th scope="col">Event Name</th>
+        <th scope="col">Event Date</th>
+        <th scope="col">Event Description</th>
+        <th scope="col">Action</th>
+      </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let row of eventData">
-            <td>{{row.id}}</td>
-            <td>{{row.eventName}}</td>
-            <td>{{row.eventDate}}</td>
-            <td>{{row.eventDescription}}</td>
-            <td>
-                <button class="btn btn-info" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(row)">Edit</button>
-                <button class="btn btn-danger mx-3" (click)="deleteEvent(row)">Delete</button>
-            </td>
-        </tr>
+      <tr *ngFor="let row of eventData">
+        <td>{{row.id}}</td>
+        <td>{{row.eventName}}</td>
+        <td>{{row.eventDate}}</td>
+        <td>{{row.eventDescription}}</td>
+        <td>
+            <button class="btn btn-success" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="onEdit(row)">Edit</button>
+            <button class="btn btn-danger mx-3" type="button" (click)="deleteEvent(row)">Delete</button>
+        </td>
+      </tr>
     </tbody>
-</table>
+  </table>
 
-<!-- Modal -->
+<!-- Modal Add/Update -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
     <div class="modal-content">
@@ -45,23 +45,25 @@
             <div class="mb-3">
               <label for="exampleInputEmail1" class="form-label">Event Name</label>
               <input type="text" formControlName = "eventName" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+              <span class="text-danger" *ngIf="formValue.controls['eventName'].dirty && formValue.hasError('required', 'eventName')">*Event Name is required.</span>
             </div>
             <div class="mb-3">
               <label for="exampleInputPassword1" class="form-label">Event Date</label>
               <input type="date" formControlName = "eventDate" class="form-control" id="exampleInputPassword1">
+              <span class="text-danger" *ngIf="formValue.controls['eventDate'].dirty && formValue.hasError('required', 'eventDate')">*Event Date is required.</span>
             </div>
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Event Description</label>
                 <input type="text" formControlName = "eventDescription" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <span class="text-danger" *ngIf="formValue.controls['eventDescription'].dirty && formValue.hasError('required', 'eventDescription')">*Event Description is required.</span>
               </div>
           </form>
     </div>
     <div class="modal-footer">
-        <button type="button" id="cancel"class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" *ngIf="showAdd" class="btn btn-primary" (click) = "postEventDetails()">Add</button>
-        <button type="button" *ngIf="showUpdate" class="btn btn-primary" (click) = "updateEventDetails()">Update</button>
+        <button type="button" id="cancel" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" *ngIf="showAdd" class="btn btn-success" (click) = "postEventDetails()" [disabled]="!formValue.valid">Add</button>
+        <button type="button" *ngIf="showUpdate" class="btn btn-success" (click) = "updateEventDetails()" [disabled]="!formValue.valid">Update</button>
     </div>
     </div>
 </div>
 </div>
-
